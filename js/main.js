@@ -32,7 +32,8 @@
 		toggleButton.toggleClass('is-clicked');
 		nav.toggleClass('menu-is-open');
 		mainHeader.toggleClass('menu-is-open');
-		mainContent.toggleClass('menu-is-open').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(){
+		mainContent.toggleClass('menu-is-open').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', 
+		function(){
 			$('body').toggleClass('overflow-hidden');
 		});
 			
@@ -68,13 +69,13 @@
 	    particleRadius: 0,
 	    curveLines: true,
 	    density: 5000,
-		proximity: 150,
+		proximity: 100,
 		parallax:true,
 		parallaxMultiplier:7,
 		minSpeedX:0.1,
 		minSpeedY:0.1,
-		maxSpeedX:3.485,
-		maxSpeedY:3.485
+		maxSpeedX:0.7,
+		maxSpeedY:0.7
 	});
 	
 	$('.search-field').load(function(){

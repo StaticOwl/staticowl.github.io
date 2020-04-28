@@ -743,7 +743,7 @@ header.menu-is-open {
 	right: 0;
 	top: 0;
 	visibility: hidden;
-	z-index: 500;
+	z-index: 10;
 	overflow-y: auto;
 
 	-webkit-transform: translateZ(0);
