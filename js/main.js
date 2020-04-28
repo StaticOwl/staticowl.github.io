@@ -33,8 +33,6 @@
 		nav.toggleClass('menu-is-open');
 		mainHeader.toggleClass('menu-is-open');
 		mainContent.toggleClass('menu-is-open').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(){
-			// firefox transitions break when parent overflow is changed, 
-			// so we need to wait for the end of the trasition to give the body an overflow hidden
 			$('body').toggleClass('overflow-hidden');
 		});
 			
@@ -63,25 +61,20 @@
 	});
 
 
-
-	$(".main-content-slides").vegas({
-		transition: 'fade',
-		transitionDuration: 2500,
-		delay: 5000,
-    	slides: [
-       	{ src: "images/slides/woods.jpg" },
-        	{ src: "images/slides/greens.jpg" },
-        	{ src: "images/slides/dandelion.jpg" }
-    	]
-	});
-
 	$('.main-content-particle-js').particleground({
-	    dotColor: '#fff',
-	    lineColor: '#555555',
-	    particleRadius: 6,
+		dotColor: '#02edfc',
+		lineColor: '#02edfc',
+		lineWidth:'0.95',
+	    particleRadius: 0,
 	    curveLines: true,
-	    density: 9000,
-	    proximity: 100
+	    density: 5000,
+		proximity: 150,
+		parallax:true,
+		parallaxMultiplier:7,
+		minSpeedX:0.1,
+		minSpeedY:0.1,
+		maxSpeedX:3.485,
+		maxSpeedY:3.485
 	});
 	
 	$('.search-field').load(function(){
