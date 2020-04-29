@@ -65,7 +65,7 @@
 	$('.main-content-particle-js').particleground({
 		dotColor: '#02edfc',
 		lineColor: '#02edfc',
-		lineWidth:'0.95',
+		lineWidth:'1.54',
 	    particleRadius: 0,
 	    curveLines: true,
 	    density: 5000,
