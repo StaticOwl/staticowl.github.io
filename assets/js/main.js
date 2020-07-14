@@ -22,7 +22,7 @@
 
    var toggleButton = $('.menu-toggle'),
        nav = $('#menu-nav-wrap'),
-       mainContent = $('#main-404-content'),
+       mainContent = $('#home'),
        mainHeader = $('.main-header');
 
 	toggleButton.on('click', function(e){
@@ -77,10 +77,4 @@
 		maxSpeedX:0.7,
 		maxSpeedY:0.7
 	});
-	
-	$('.search-field').load(function(){
-		
-	})
- 
-
 })(jQuery);

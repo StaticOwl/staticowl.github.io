@@ -16,6 +16,8 @@
  * ------------------------------------------------------------------- 
  */
 
+
+
 html {
 	font-size: 10px;
 }
@@ -800,12 +802,12 @@ header.menu-is-open {
 
 /** 
  * ===================================================================
- * 08. main-404-content - (_layout.scss)
+ * 08. home - (_layout.scss)
  *
- * ------------------------------------------------------------------- 
+ * -------------------------------------------------------------------
  */
 
-#main-404-content {
+#home {
 	background: #151515;
 	width: 100%;
 	height: 100%;
@@ -823,19 +825,19 @@ header.menu-is-open {
 	transition: transform 0.4s ease-in-out;
 }
 
-#main-404-content.menu-is-open {
+#home.menu-is-open {
 	-webkit-transform: translateX(-260px);
 	-ms-transform: translateX(-260px);
 	transform: translateX(-260px);
 }
 
 /* particle background */
-#main-404-content.main-content-particle-js {
+#home.main-content-particle-js {
 	background: #020507;
 	overflow: hidden;
 }
 
-#main-404-content.main-content-particle-js .pg-canvas {
+#home.main-content-particle-js .pg-canvas {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -843,7 +845,7 @@ header.menu-is-open {
 	width: 100% !important;
 	opacity: .15;
 }
-#main-404-content.main-content-particle-js .shadow-overlay {
+#home.main-content-particle-js .shadow-overlay {
 	display: none;
 }
 
@@ -871,7 +873,7 @@ header.menu-is-open {
 	display: table-cell;
 	vertical-align: middle;
 	position: relative;
-	z-index: 700;  
+	z-index: 700;
 }
 .main-content h1 {
 	font-family: "roboto-black", sans-serif;
@@ -936,7 +938,7 @@ header.menu-is-open {
 	background: rgba(255, 255, 255, 0.1);
 	width: 100%;
 }
-#main-404-content footer {
+#home footer {
 	position: absolute;
 	width: 100%;
 	min-height: 12rem;
@@ -946,27 +948,27 @@ header.menu-is-open {
 }
 
 /* social links */
-#main-404-content .social-links {
+#home .social-links {
 	text-align: right;
 	margin-bottom: 3rem;
 }
-#main-404-content .social-links ul {
+#home .social-links ul {
 	display: block;
 	list-style: none;
 	margin: 0;
 	padding: 0;
 	font-size: 3rem;
 }
-#main-404-content .social-links ul li {
+#home .social-links ul li {
 	display: inline-block;
 	padding: 0 .9rem;
 }
-#main-404-content .social-links ul li:last-child {
+#home .social-links ul li:last-child {
 	padding-right: 0;
 }
 
 /* bottom links */
-#main-404-content .bottom-links .links {
+#home .bottom-links .links {
 	display: block;
 	list-style: none;
 	margin: 0 0 .9rem 0;
@@ -974,41 +976,41 @@ header.menu-is-open {
 	font-family: "roboto-bold", sans-serif;
 	font-size: 1.7rem;
 }
-#main-404-content .bottom-links .links:before,
-#main-404-content .bottom-links .links:after {
+#home .bottom-links .links:before,
+#home .bottom-links .links:after {
 	content: "";
 	display: table;
 }
-#main-404-content .bottom-links .links:after {
+#home .bottom-links .links:after {
 	clear: both;
 }
-#main-404-content .bottom-links li {
+#home .bottom-links li {
 	float: left;
 	padding: 0 1.2rem;
 }
-#main-404-content .bottom-links li:first-child {
+#home .bottom-links li:first-child {
 	padding-left: 0;
 }
-#main-404-content .bottom-links .credits {
+#home .bottom-links .credits {
 	font-size: 1.4rem;
 	line-height: 3rem;
 	color: rgba(255, 255, 255, 0.2);
 }
-#main-404-content .bottom-links .credits a {
+#home .bottom-links .credits a {
 	color: rgba(255, 255, 255, 0.2);
 	display: inline-block;
 	border-bottom: 1px dotted rgba(255, 255, 255, 0.1);
 }
-#main-404-content .bottom-links .credits a:hover,
-#main-404-content .bottom-links .credits a:focus {
+#home .bottom-links .credits a:hover,
+#home .bottom-links .credits a:focus {
 	color: #FFFFFF;
 }
 
 /**
- * responsive - main-404-content
- * ------------------------------------------------------------------- 
+ * responsive - home
+ * -------------------------------------------------------------------
  */
- 
+
 @media only screen and (max-width:1024px) {
 	.main-content h1 {
 		font-size: 8.6rem;
@@ -1018,16 +1020,16 @@ header.menu-is-open {
 	.main-content h1 {
 		font-size: 7.2rem;
 	}
-	#main-404-content .social-links {
+	#home .social-links {
 		text-align: left;
 	}
-	#main-404-content .social-links ul {
+	#home .social-links ul {
 		font-size: 2.8rem;
 	}
-	#main-404-content .social-links li:first-child {
+	#home .social-links li:first-child {
 		padding-left: 0;
 	}
-	#main-404-content .bottom-links .links {
+	#home .bottom-links .links {
 		font-size: 1.6rem;
 	}
 }
@@ -1040,7 +1042,7 @@ header.menu-is-open {
 	.main-content h1 {
 		font-size: 5.5rem;
 	}
-	#main-404-content .social-links ul {
+	#home .social-links ul {
 		font-size: 2.6rem;
 	}
 }
