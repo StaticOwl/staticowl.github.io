@@ -1,80 +1,153 @@
-(function($) {
+;(function () {
+	
+	'use strict';
 
-	"use strict";
-
-   $(window).load(function() {
-
-    	$("#loader").fadeOut("slow", function(){
-        $("#preloader").delay(300).fadeOut("slow");
-
-      }); 
-  	})
-
-
-	$('input, textarea, select').placeholder()  
-  	setTimeout(function() {
-
-   	$('.main-content h1').fitText(.8, { minFontSize: '42px', maxFontSize: '94px' });
-
-  	}, 100);
-
-	$(".kern-this").lettering(); 
-
-   var toggleButton = $('.menu-toggle'),
-       nav = $('#menu-nav-wrap'),
-       mainContent = $('#home'),
-       mainHeader = $('.main-header');
-
-	toggleButton.on('click', function(e){
-
-		e.preventDefault();
-
-		toggleButton.toggleClass('is-clicked');
-		nav.toggleClass('menu-is-open');
-		mainHeader.toggleClass('menu-is-open');
-		mainContent.toggleClass('menu-is-open').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', 
-		function(){
-			$('body').toggleClass('overflow-hidden');
-		});
-			
-		if($('html').hasClass('no-csstransitions')) {
-			$('body').toggleClass('overflow-hidden');
+	var isMobile = {
+		Android: function() {
+			return navigator.userAgent.match(/Android/i);
+		},
+			BlackBerry: function() {
+			return navigator.userAgent.match(/BlackBerry/i);
+		},
+			iOS: function() {
+			return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+		},
+			Opera: function() {
+			return navigator.userAgent.match(/Opera Mini/i);
+		},
+			Windows: function() {
+			return navigator.userAgent.match(/IEMobile/i);
+		},
+			any: function() {
+			return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
 		}
+	};
 
-	});
+	
+	var fullHeight = function() {
 
-	mainContent.on('click', function(e){
-
-		if( !$(e.target).is('.menu-toggle, .menu-toggle span') ) {
-
-			toggleButton.removeClass('is-clicked');
-			nav.removeClass('menu-is-open');
-			mainHeader.removeClass('menu-is-open');
-			mainContent.removeClass('menu-is-open').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(){
-				$('body').removeClass('overflow-hidden');
+		if ( !isMobile.any() ) {
+			$('.js-fullheight').css('height', $(window).height());
+			$(window).resize(function(){
+				$('.js-fullheight').css('height', $(window).height());
 			});
+		}
+	};
 
-			if($('html').hasClass('no-csstransitions')) {
-				$('body').removeClass('overflow-hidden');
+	// Parallax
+	var parallax = function() {
+		$(window).stellar();
+	};
+
+	var contentWayPoint = function() {
+		var i = 0;
+		$('.animate-box').waypoint( function( direction ) {
+
+			if( direction === 'down' && !$(this.element).hasClass('animated-fast') ) {
+				
+				i++;
+
+				$(this.element).addClass('item-animate');
+				setTimeout(function(){
+
+					$('body .animate-box.item-animate').each(function(k){
+						var el = $(this);
+						setTimeout( function () {
+							var effect = el.data('animate-effect');
+							if ( effect === 'fadeIn') {
+								el.addClass('fadeIn animated-fast');
+							} else if ( effect === 'fadeInLeft') {
+								el.addClass('fadeInLeft animated-fast');
+							} else if ( effect === 'fadeInRight') {
+								el.addClass('fadeInRight animated-fast');
+							} else {
+								el.addClass('fadeInUp animated-fast');
+							}
+
+							el.removeClass('item-animate');
+						},  k * 100, 'easeInOutExpo' );
+					});
+					
+				}, 50);
+				
 			}
 
+		} , { offset: '85%' } );
+	};
+
+
+
+	var goToTop = function() {
+
+		$('.js-gotop').on('click', function(event){
+			
+			event.preventDefault();
+
+			$('html, body').animate({
+				scrollTop: $('html').offset().top
+			}, 500, 'easeInOutExpo');
+			
+			return false;
+		});
+
+		$(window).scroll(function(){
+
+			var $win = $(window);
+			if ($win.scrollTop() > 200) {
+				$('.js-top').addClass('active');
+			} else {
+				$('.js-top').removeClass('active');
+			}
+
+		});
+	
+	};
+
+	var pieChart = function() {
+		$('.chart').easyPieChart({
+			scaleColor: true,
+			lineWidth: 4,
+			lineCap: 'round',
+			barColor: '#000fff',
+			trackColor:	false,
+			size: 160,
+			animate: {
+				duration: 2500,
+				enabled: true
+			},
+			easing: 'easeInOutExpo'
+		});
+	};
+
+	var skillsWayPoint = function() {
+		if ($('#fh5co-skills').length > 0 ) {
+			$('#fh5co-skills').waypoint( function( direction ) {
+										
+				if( direction === 'down' && !$(this.element).hasClass('animated') ) {
+					setTimeout( pieChart , 400);					
+					$(this.element).addClass('animated');
+				}
+			} , { offset: '90%' } );
 		}
+
+	};
+
+
+	// Loading page
+	var loaderPage = function() {
+		$(".fh5co-loader").fadeOut("slow");
+	};
+
+	
+	$(function(){
+		contentWayPoint();
+		goToTop();
+		loaderPage();
+		fullHeight();
+		parallax();
+		// pieChart();
+		skillsWayPoint();
 	});
 
 
-	$('.main-content-particle-js').particleground({
-		dotColor: '#02edfc',
-		lineColor: '#02edfc',
-		lineWidth:'2.34',
-	    particleRadius: 0,
-	    curveLines: true,
-	    density: 5000,
-		proximity: 100,
-		parallax:true,
-		parallaxMultiplier:7,
-		minSpeedX:0.1,
-		minSpeedY:0.1,
-		maxSpeedX:0.7,
-		maxSpeedY:0.7
-	});
-})(jQuery);
+}());
